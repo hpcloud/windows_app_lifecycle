@@ -73,6 +73,21 @@ namespace Builder.Tests.Specs.Features
                 Directory.Delete(workingDirectory, true);
             };
 
+            context["given no procfile, executable or Web.conf exists"] = () =>
+            {
+                string resultFile = null;
+
+                before = () =>
+                {
+                    resultFile = Path.Combine(tmpDir, "result.json");
+                };
+
+                it["Creates the result.json"] = () =>
+                {
+                    File.Exists(resultFile).should_be_true();
+                };
+            };
+
             context["given i have an app similar to nora"] = () =>
             {
                 string resultFile = null;
